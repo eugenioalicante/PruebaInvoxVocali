@@ -1,9 +1,14 @@
 ﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Options;
 using PruebaInvoxMedical.Infrastructure.Exceptions;
+using PruebaInvoxMedicalService.Service.AppSettings;
+using PruebaInvoxMedicalService.Service.Dto;
 using PruebaInvoxMedicalService.Service.Enum;
 using PruebaInvoxMedicalService.Service.Interface;
 using System;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace PruebaInvoxMedicalService.Service.Service
@@ -11,10 +16,13 @@ namespace PruebaInvoxMedicalService.Service.Service
     public class MP3Service : IMP3Service
     {
         private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly FileExtensions _fileExtensions;
 
-        public MP3Service(IHostingEnvironment hostingEnvironment)
+        public MP3Service(IHostingEnvironment hostingEnvironment,
+                          IOptions<FileExtensions> fileExtensions)
         {
-            _hostingEnvironment = hostingEnvironment;            
+            _hostingEnvironment = hostingEnvironment;
+            _fileExtensions = fileExtensions.Value;
         }
 
         /// <summary>
@@ -22,8 +30,15 @@ namespace PruebaInvoxMedicalService.Service.Service
         /// </summary>
         /// <param name="enumMP3"></param>
         /// <returns></returns>
-        public string GetText(MP3.EnumMP3 enumMP3)
+        public string GetText(DtoUploadManagerData uploadManagerData)
         {
+            string extension = Path.GetExtension(uploadManagerData.File.FileName);
+
+            if (!_fileExtensions.AllowedFileExtensions.Any(x => x.Equals(extension)))
+            {
+                throw new ServerErrorFivePercent("Formato de documento no soportado");
+            }
+
             CauseError();
 
             var pathText = Path.Combine(_hostingEnvironment.ContentRootPath, "Texts");
@@ -32,7 +47,10 @@ namespace PruebaInvoxMedicalService.Service.Service
 
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
-            switch (enumMP3)
+            Random random = new Random();
+            int randomNumber = random.Next(1, 4);
+
+            switch ((MP3.EnumMP3)randomNumber)
             {
                 case MP3.EnumMP3.MP3_1:
                     text = File.ReadAllText(Path.Combine(pathText, "Texto1.txt"), Encoding.GetEncoding(1252));

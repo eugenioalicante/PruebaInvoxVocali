@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using PruebaInvoxMedical.Infrastructure.Middleware;
+using PruebaInvoxMedicalService.Service.AppSettings;
 using PruebaInvoxMedicalService.Service.Startup;
 using Swashbuckle.AspNetCore.Swagger;
 
@@ -35,6 +36,8 @@ namespace PruebaInvoxMedical
             services.AddDependencyInjection();
 
             services.AddSwagger();
+
+            services.Configure<FileExtensions>(Configuration.GetSection("FileExtensions"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

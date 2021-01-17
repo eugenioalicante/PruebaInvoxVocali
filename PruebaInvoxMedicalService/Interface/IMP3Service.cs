@@ -1,4 +1,6 @@
-﻿using PruebaInvoxMedicalService.Service.Enum;
+﻿using Microsoft.AspNetCore.Http;
+using PruebaInvoxMedicalService.Service.Dto;
+using PruebaInvoxMedicalService.Service.Enum;
 
 namespace PruebaInvoxMedicalService.Service.Interface
 {
@@ -9,6 +11,6 @@ namespace PruebaInvoxMedicalService.Service.Interface
         /// </summary>
         /// <param name="enumMP3"></param>
         /// <returns></returns>
-        string GetText(MP3.EnumMP3 enumMP3);
+        string GetText(DtoUploadManagerData formFile);
     }
 }

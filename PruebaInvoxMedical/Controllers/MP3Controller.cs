@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using PruebaInvoxMedicalService.Service.Dto;
 using PruebaInvoxMedicalService.Service.Enum;
 using PruebaInvoxMedicalService.Service.Interface;
 
@@ -21,9 +23,9 @@ namespace PruebaInvoxMedical.Controllers
         /// <param name="enumAttributes"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult Get(MP3.EnumMP3 enumAttributes)
+        public ActionResult PostMP3([FromForm]DtoUploadManagerData dtoUploadManagerData)
         {
-            return Ok(_mP3Service.GetText(enumAttributes));
+            return Ok(_mP3Service.GetText(dtoUploadManagerData));
         }
     }
 }
