@@ -1,0 +1,2 @@
+VÓCALI desarrolla tecnologías para el procesamiento del lenguaje natural, es decir, tecnologías que permiten que cualquier máquina o software sea manejado usando la voz, siempre de una manera sencilla, natural y amigable.
+El usuario no tiene que aprender o memorizar qué órdenes puede darle al sistema o realizar tediosos entrenamientos para que reconozca su voz, simplemente le habla y su sistema actuará.

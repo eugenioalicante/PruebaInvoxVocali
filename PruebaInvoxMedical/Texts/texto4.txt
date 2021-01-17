@@ -1,0 +1,1 @@
+INVOX Legal es un software de reconocimiento de voz especializado en el entorno legal. Permite la elaboración o modificación de documentos legales utilizando simplemente la voz, lo que agiliza de forma significativa la elaboración de documentos legales.

@@ -1,0 +1,2 @@
+INVOX Medical
+INVOX Medical es un innovador software que permite el dictado automático de informes médicos, con una alta diferenciación por especialidades médicas, contando con diferentes diccionarios basados en el Procesamiento del Lenguaje Natural.
