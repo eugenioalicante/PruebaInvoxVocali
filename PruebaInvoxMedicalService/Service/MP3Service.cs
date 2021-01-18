@@ -26,7 +26,7 @@ namespace PruebaInvoxMedicalService.Service.Service
         }
 
         /// <summary>
-        /// Convert an MP3 file into an audio
+        /// Convert an MP3 file into an text
         /// </summary>
         /// <param name="enumMP3"></param>
         /// <returns></returns>
