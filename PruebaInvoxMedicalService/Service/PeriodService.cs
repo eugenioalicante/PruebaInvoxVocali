@@ -12,11 +12,23 @@ namespace PruebaInvoxMedicalService.Service.Service
     public class PeriodService : IPeriodService
     {
         /// <summary>
+        ///  Sum of periods. Return CSV.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        public byte[] GetPeriodCSV(List<DtoPeriodRequest> request)
+        {
+            List<DtoPeriodResponse> listperiodResponse = GetPeriod(request);
+
+            return GenerateCSV(listperiodResponse);
+        }
+
+        /// <summary>
         /// Sum of periods
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        public byte[] GetPeriod(List<DtoPeriodRequest> request)
+        private List<DtoPeriodResponse> GetPeriod(List<DtoPeriodRequest> request)
         {
             List<TimeSpan> list = new List<TimeSpan>();
 
@@ -50,7 +62,7 @@ namespace PruebaInvoxMedicalService.Service.Service
                 listReturn.Add(new DtoPeriodResponse { Id = i + 1, Start = sInit, End = sFin });
             }
 
-            return GenerateCSV(listReturn);
+            return listReturn;
         }
 
         /// <summary>

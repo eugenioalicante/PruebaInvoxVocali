@@ -10,6 +10,6 @@ namespace PruebaInvoxMedicalService.Service.Interface
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
-        byte[] GetPeriod(List<DtoPeriodRequest> request);
+        byte[] GetPeriodCSV(List<DtoPeriodRequest> request);
     }
 }

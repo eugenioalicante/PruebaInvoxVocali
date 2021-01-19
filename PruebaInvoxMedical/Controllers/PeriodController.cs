@@ -25,9 +25,7 @@ namespace PruebaInvoxMedical.Controllers
         [HttpPost]
         public ActionResult Get([FromBody]List<DtoPeriodRequest> request)
         {
-            byte[] csv =  _periodService.GetPeriod(request);
-
-            return File(csv, "application/csv", "Period_" + DateTime.UtcNow.ToString("yyyyMMddHHmmss") + ".csv");
+            return File(_periodService.GetPeriodCSV(request), "application/csv", "Period_" + DateTime.UtcNow.ToString("yyyyMMddHHmmss") + ".csv");
         }
     }
 }
